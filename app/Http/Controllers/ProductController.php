@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\TransactionDetail;
+use App\Models\TransactionHeader;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -24,5 +26,11 @@ class ProductController extends Controller
         $product = Product::all();
         $sum = Product::sum('price');
         return view('product.checkout', compact('product', 'sum'));
+    }
+
+    public function report()
+    {
+        $transactions = TransactionDetail::all();
+        return view('laporan.report', compact('transactions'));
     }
 }

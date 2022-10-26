@@ -16,22 +16,33 @@ class CheckoutController extends Controller
 
         TransactionHeader::create([
             'document_code' => 'TRX',
-            'document_number' => 001,
+            'document_number' => 001 + 1,
             'login_id' => Auth::user()->id,
             'total' =>  $total,
             'date' =>  date('Y-m-d H:i:s')
         ]);
+
+        return redirect('/product-list')->with('message', 'Pembelian Berhasil');
     }
 
     public function checkoutPos(Request $req)
     {
         $total = Product::sum('price');
-        $transaction = TransactionDetail::with('products')->get();
+        $transaction = Product::get();
+        // dd($transaction);
+
+        TransactionHeader::create([
+            'document_code' => 'TRX',
+            'document_number' => 001 + 1,
+            'login_id' => Auth::user()->id,
+            'total' =>  $total,
+            'date' =>  date('Y-m-d H:i:s')
+        ]);
 
         foreach ($transaction as $t) {
             TransactionDetail::create([
                 'document_code' => 'TRX',
-                'document_number' => 001,
+                'document_number' => 001 + 1,
                 'product_code' => $t->product_code,
                 'price' => $t->price,
                 'quantity' => $req->jumlah,
@@ -40,5 +51,7 @@ class CheckoutController extends Controller
                 'currency' => 'IDR'
             ]);
         }
+
+        return to_route('report');
     }
 }

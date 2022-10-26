@@ -20,8 +20,9 @@
                                     <span>
                                         {{ $item->product_name }}
                                     </span>
-                                    <span class="d-block"><input type="number" name="jumlah" class="pcs"> PCS</span>
-                                    <span>SubTotal : {{ $item->price }}</span>
+                                    <span class="d-block"><input type="number" name="jumlah" class="pcs"
+                                            value="1"> PCS</span>
+                                    SubTotal : {{ $item->price }}
                                 </div>
                             </div>
                         @endforeach
@@ -52,4 +53,9 @@
 
         }
     </style>
+@endpush
+@push('script')
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script></script>
 @endpush

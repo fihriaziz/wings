@@ -14,7 +14,7 @@
                                     class="form-control">
                             </div>
                             <div class="mt-5">
-                                <input type="password" name="password" id="password" placeholder="Username"
+                                <input type="password" name="password" id="password" placeholder="Password"
                                     class="form-control">
                             </div>
                             <div class="mt-4 d-flex justify-content-center">

@@ -25,7 +25,10 @@ Route::get('/product-list/{id}', [ProductController::class, 'detail'])->name('de
 Route::get('product-checkout', [ProductController::class, 'checkout'])->name('checkout');;
 
 // checkout
-Route::post('/checkout', [TransactionHeaderController::class, 'transaction'])->name('Poscheckout');
+Route::post('/checkout', [CheckoutController::class, 'checkoutPos'])->name('Poscheckout');
 
 // buy
 Route::post('/buy', [CheckoutController::class, 'prosess'])->name('proses');
+
+// report
+Route::get('/laporan', [ProductController::class, 'report'])->name('report');
